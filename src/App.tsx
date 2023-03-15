@@ -1,10 +1,14 @@
 import { useState } from "react";
 import reactLogo from "./assets/react.svg";
 import ProductoTarjeta from "./components/ProductoTarjeta";
-import { StyleSystemProvider } from "@architecture-it/stylesystem";
+import { Card } from "@architecture-it/stylesystem";
+import { Header } from "@architecture-it/stylesystem";
+import { Sidebar } from "@architecture-it/stylesystem";
+
 import "./App.css";
-import ProductoProps from "./components/ProductoInterface";
+import { ProductoProps } from "./components/ProductoInterface";
 import ListaTarjetas from "./components/ListaTarjetas";
+import GetProductos from "./servicio/GetProductos";
 
 function App() {
   const [count, setCount] = useState(0);
@@ -21,36 +25,24 @@ function App() {
     precio: 745,
     imagen: "25",
   };
-
-  const miArray = [];
+  const productos: ProductoProps[] = GetProductos();
 
   return (
     <>
-      <StyleSystemProvider>
-        <h1
-          style={{
-            color: "var(--primary)",
-          }}
-        >
-          Hola
-        </h1>
+      <Header onClickButton={() => {}}>Administrar</Header>
+      <Card
+        className="tarjeta"
+        imageProps={{
+          alt: "tutoriales",
+          src: "https://a.storyblok.com/f/63950/402x293/6b8cd64271/tutoriales.jpg",
+        }}
+        onClick={() => {}}
+        principalText="¿Cómo cambiar entrega en domicilio a retiro en sucursal?"
+        secondaryText="ver vídeo"
+        url=" url"
+      />
 
-        <ListaTarjetas productos={[producto, producto2]} />
-        <div style={{ display: "flex" }}>
-          <ProductoTarjeta
-            nombre="Zapatos"
-            desc="Para caminar mucho"
-            precio={200}
-            imagen="15"
-          />
-          <ProductoTarjeta
-            nombre="Zapatos"
-            desc="Para caminar mucho"
-            precio={200}
-            imagen="16"
-          />
-        </div>
-      </StyleSystemProvider>
+      <ListaTarjetas productos={productos} />
     </>
   );
 }

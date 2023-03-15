@@ -1,0 +1,25 @@
+{
+  "productos": [
+    {
+      "id": 1,
+      "nombre": "Zapatos",
+      "descripcion": "Para correr",
+      "precio": 500,
+      "imagen": "https://randomfox.ca/images/25.jpg"
+    },
+    {
+      "id": 2,
+      "nombre": "Maceta",
+      "descripcion": "para poner plantas ",
+      "precio": 500,
+      "imagen": "https://randomfox.ca/images/27.jpg"
+    },
+    {
+      "id": 3,
+      "nombre": "Bolso",
+      "descripcion": "para llevar cosas",
+      "precio": 500,
+      "imagen": "https://randomfox.ca/images/15.jpg"
+    }
+  ]
+}

@@ -1,4 +1,4 @@
-import ProductoProps from "./ProductoInterface";
+import { ProductoProps } from "./ProductoInterface";
 import ProductoTarjeta from "./ProductoTarjeta";
 
 interface ListaTarjetasProps {
