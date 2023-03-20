@@ -9,6 +9,8 @@ import "./App.css";
 import { ProductoProps } from "./components/ProductoInterface";
 import ListaTarjetas from "./components/ListaTarjetas";
 import GetProductos from "./servicio/GetProductos";
+import NuevoProducto from "./components/NuevoProducto";
+import guardarProducto from "./components/guardarProducto";
 
 function App() {
   const [count, setCount] = useState(0);
@@ -43,6 +45,7 @@ function App() {
       />
 
       <ListaTarjetas productos={productos} />
+      <NuevoProducto onSubmit={guardarProducto} />
     </>
   );
 }

@@ -20,6 +20,20 @@
       "descripcion": "para llevar cosas",
       "precio": 500,
       "imagen": "https://randomfox.ca/images/15.jpg"
+    },
+    {
+      "nombre": "asd",
+      "descripcion": "asd",
+      "precio": 123,
+      "imagen": "https://randomfox.ca/images/108.jpg",
+      "id": 4
+    },
+    {
+      "nombre": "cosas",
+      "descripcion": "para variados usos",
+      "precio": 788,
+      "imagen": "https://randomfox.ca/images/75.jpg",
+      "id": 5
     }
   ]
 }
