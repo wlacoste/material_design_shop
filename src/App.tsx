@@ -1,5 +1,13 @@
 import { useState } from "react";
-import reactLogo from "./assets/react.svg";
+import {
+  createBrowserRouter,
+  Routes,
+  Route,
+  Link,
+  NavLink,
+  createRoutesFromElements,
+  RouterProvider,
+} from "react-router-dom";
 import ProductoTarjeta from "./components/ProductoTarjeta";
 import { Card } from "@architecture-it/stylesystem";
 import { Header } from "@architecture-it/stylesystem";
@@ -11,41 +19,31 @@ import ListaTarjetas from "./components/ListaTarjetas";
 import GetProductos from "./servicio/GetProductos";
 import NuevoProducto from "./components/NuevoProducto";
 import guardarProducto from "./components/guardarProducto";
+import RootLayout from "./layout/Layout";
+import ListaProductos from "./components/administrarProductos";
+
+const productos: ProductoProps[] = await GetProductos();
+
+const router = createBrowserRouter(
+  createRoutesFromElements(
+    <Route path="/" element={<RootLayout />}>
+      <Route index element={<ListaTarjetas productos={productos} />} />
+      <Route
+        path="nuevo"
+        element={<NuevoProducto onSubmit={guardarProducto} />}
+      />
+      <Route
+        path="administrar"
+        element={<ListaProductos productos={productos} />}
+      />
+    </Route>
+  )
+);
 
 function App() {
-  const [count, setCount] = useState(0);
-
-  const producto: ProductoProps = {
-    nombre: "Maceta",
-    desc: "para plantas",
-    precio: 542,
-    imagen: "10",
-  };
-  const producto2: ProductoProps = {
-    nombre: "Zapatos",
-    desc: "para caminar",
-    precio: 745,
-    imagen: "25",
-  };
-  const productos: ProductoProps[] = GetProductos();
-
   return (
     <>
-      <Header onClickButton={() => {}}>Administrar</Header>
-      <Card
-        className="tarjeta"
-        imageProps={{
-          alt: "tutoriales",
-          src: "https://a.storyblok.com/f/63950/402x293/6b8cd64271/tutoriales.jpg",
-        }}
-        onClick={() => {}}
-        principalText="¿Cómo cambiar entrega en domicilio a retiro en sucursal?"
-        secondaryText="ver vídeo"
-        url=" url"
-      />
-
-      <ListaTarjetas productos={productos} />
-      <NuevoProducto onSubmit={guardarProducto} />
+      <RouterProvider router={router} />
     </>
   );
 }

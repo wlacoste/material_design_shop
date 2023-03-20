@@ -1,6 +1,7 @@
 export interface ProductoProps {
+  id: number;
   nombre: string;
-  desc: string;
+  descripcion: string;
   precio: number;
   imagen: string;
 }
