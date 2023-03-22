@@ -1,18 +1,18 @@
 {
   "productos": [
     {
-      "id": 1,
-      "nombre": "Zapatos",
-      "descripcion": "Para correr",
-      "precio": 500,
-      "imagen": "https://randomfox.ca/images/25.jpg"
+      "nombre": "sdfs",
+      "descripcion": "sdf",
+      "precio": 0,
+      "imagen": "sdfss",
+      "id": 1
     },
     {
-      "id": 2,
-      "nombre": "Maceta",
-      "descripcion": "para poner plantas ",
-      "precio": 500,
-      "imagen": "https://randomfox.ca/images/27.jpg"
+      "nombre": "Muchas",
+      "descripcion": "cosas",
+      "precio": 87554,
+      "imagen": "https://randomfox.ca/images/27.jpg",
+      "id": 2
     },
     {
       "id": 3,
@@ -22,10 +22,10 @@
       "imagen": "https://randomfox.ca/images/15.jpg"
     },
     {
-      "nombre": "asd",
-      "descripcion": "asd",
-      "precio": 123,
-      "imagen": "https://randomfox.ca/images/108.jpg",
+      "nombre": "Chola",
+      "descripcion": "hola",
+      "precio": 888,
+      "imagen": "https://randomfox.ca/images/15.jpg",
       "id": 4
     },
     {
