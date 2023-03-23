@@ -5,24 +5,44 @@ import NuevoProducto from "./NuevoProducto";
 import guardarProducto from "./guardarProducto";
 import ModificarProducto from "./ModificarProducto";
 import putProducto from "../servicio/PutProducto";
-import React from "react";
+import React, { useEffect, useState } from "react";
+import GetProductos from "../servicio/GetProductos";
+import EliminarProducto from "./EliminarProducto";
+import deleteProducto from "../servicio/DeleteProducto";
 interface ListaTarjetasProps {
   productos: ProductoProps[];
+  setProductos: React.Dispatch<React.SetStateAction<ProductoProps[]>>;
 }
 
-function ListaProductos({ productos }: ListaTarjetasProps) {
-  const tarjetas = productos.map((producto) => ProductoDetalle(producto));
+function ListaProductos({ productos, setProductos }: ListaTarjetasProps) {
+  const fetchProductos = async () => {
+    //sera un closure?
+    const data: ProductoProps[] = await GetProductos();
+    setProductos(data);
+  };
+  const [tarjetas, setTarjetas] = useState<JSX.Element[]>(
+    productos.map((producto) => ProductoDetalle(producto, fetchProductos))
+  );
+
+  useEffect(() => {
+    //hago copia del array de productos.. por si jode con que no cambia el estado
+
+    const productosCopy = productos.map((x) => x);
+    setTarjetas(
+      productosCopy.map((producto) => ProductoDetalle(producto, fetchProductos))
+    );
+  }, [productos]);
 
   return (
     <>
       <table className="tablaProductos">
-        <tr>
+        <thead>
           <th>Id</th>
           <th>Nombre</th>
           <th>Descripcion</th>
           <th>Imagen</th>
           <th>Precio</th>
-        </tr>
+        </thead>
       </table>
       {tarjetas}
       <ToastContainer
@@ -39,9 +59,7 @@ function ListaProductos({ productos }: ListaTarjetasProps) {
   );
 }
 
-export default ListaProductos;
-
-const editarProductoToast = (id: number) => {
+const editarProductoToast = (id: number, fetchProductos: () => void) => {
   const dismiss = () => toast.dismiss(this);
   toast(
     <>
@@ -50,36 +68,46 @@ const editarProductoToast = (id: number) => {
         onSubmit={putProducto}
         idProducto={id}
         dismiss={dismiss}
+        fetchProductos={fetchProductos}
+      />
+    </>
+    // fetchProductos()
+  );
+};
+
+const eliminarProductoToast = (id: number, fetchProductos: () => void) => {
+  const dismiss = () => toast.dismiss(this);
+  toast(
+    <>
+      <h2>Eliminando {id}</h2>
+      <EliminarProducto
+        onSubmit={deleteProducto}
+        idProducto={id}
+        dismiss={dismiss}
       />
     </>
   );
 };
 
-const eliminarProductoToast = (id: number) => {
-  toast(
-    <>
-      <h2>Eliminando {id}</h2>
-      <NuevoProducto onSubmit={guardarProducto} />
-    </>
-  );
-};
-
-function ProductoDetalle({
-  id,
-  nombre,
-  descripcion,
-  precio,
-  imagen,
-}: ProductoProps) {
+function ProductoDetalle(
+  { id, nombre, descripcion, precio, imagen }: ProductoProps,
+  fetchProductos: () => void
+) {
   return (
-    <div className="productoItem">
-      <div>{id}</div>
-      <div>{nombre}</div>
-      <div>{descripcion}</div>
-      <div>{imagen}</div>
-      <div>{precio}</div>
-      <button onClick={() => editarProductoToast(id)}>Editar</button>
-      <button onClick={() => eliminarProductoToast(id)}>Eliminar</button>
+    <div className="productoItem" id={id + ""}>
+      <h4>{id}</h4>
+      <h4>{nombre}</h4>
+      <h4>{descripcion}</h4>
+      <h4>{imagen}</h4>
+      <h4>{precio}</h4>
+      <button onClick={() => editarProductoToast(id, fetchProductos)}>
+        Editar
+      </button>
+      <button onClick={() => eliminarProductoToast(id, fetchProductos)}>
+        Eliminar
+      </button>
     </div>
   );
 }
+
+export default ListaProductos;

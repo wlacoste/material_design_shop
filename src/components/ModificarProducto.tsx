@@ -12,12 +12,14 @@ interface ModificarProductoProps {
   ) => void;
   idProducto: number;
   dismiss: () => void;
+  fetchProductos: () => void;
 }
 
 const ModificarProducto: React.FC<ModificarProductoProps> = ({
   onSubmit,
   idProducto,
   dismiss,
+  fetchProductos,
 }) => {
   const [id, setId] = useState(0);
   const [nombre, setNombre] = useState("");
@@ -50,6 +52,7 @@ const ModificarProducto: React.FC<ModificarProductoProps> = ({
     setId(idProducto);
     dismiss();
     onSubmit(idProducto, nombre, descripcion, precio, imagen);
+    fetchProductos();
   };
 
   return (

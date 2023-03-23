@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import {
   createBrowserRouter,
   Routes,
@@ -22,25 +22,31 @@ import guardarProducto from "./components/guardarProducto";
 import RootLayout from "./layout/Layout";
 import ListaProductos from "./components/administrarProductos";
 
-const productos: ProductoProps[] = await GetProductos();
-
-const router = createBrowserRouter(
-  createRoutesFromElements(
-    <Route path="/" element={<RootLayout />}>
-      <Route index element={<ListaTarjetas productos={productos} />} />
-      <Route
-        path="nuevo"
-        element={<NuevoProducto onSubmit={guardarProducto} />}
-      />
-      <Route
-        path="administrar"
-        element={<ListaProductos productos={productos} />}
-      />
-    </Route>
-  )
-);
+const data = await GetProductos();
 
 function App() {
+  const [productos, setProductos] = useState<ProductoProps[]>(
+    data as ProductoProps[]
+  );
+
+  const router = createBrowserRouter(
+    createRoutesFromElements(
+      <Route path="/" element={<RootLayout />}>
+        <Route index element={<ListaTarjetas productos={productos} />} />
+        <Route
+          path="nuevo"
+          element={<NuevoProducto onSubmit={guardarProducto} />}
+        />
+        <Route
+          path="administrar"
+          element={
+            <ListaProductos productos={productos} setProductos={setProductos} />
+          }
+        />
+      </Route>
+    )
+  );
+
   return (
     <>
       <RouterProvider router={router} />

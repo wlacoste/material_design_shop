@@ -1,25 +1,18 @@
 {
   "productos": [
     {
-      "nombre": "sdfs",
-      "descripcion": "sdf",
-      "precio": 0,
-      "imagen": "sdfss",
-      "id": 1
-    },
-    {
-      "nombre": "Muchas",
-      "descripcion": "cosas",
-      "precio": 87554,
+      "nombre": "Mocachino",
+      "descripcion": "1. f. Esp. Calzado hecho generalmente con piel o lona y suela de goma, que se ata con cordones o se sujeta con velcro, y se usa para practicar algunos deportes.",
+      "precio": 123,
       "imagen": "https://randomfox.ca/images/27.jpg",
       "id": 2
     },
     {
-      "id": 3,
-      "nombre": "Bolso",
-      "descripcion": "para llevar cosas",
-      "precio": 500,
-      "imagen": "https://randomfox.ca/images/15.jpg"
+      "nombre": "Bolsones",
+      "descripcion": "para llevar muchas cosas",
+      "precio": 444,
+      "imagen": "https://randomfox.ca/images/15.jpg",
+      "id": 3
     },
     {
       "nombre": "Chola",

@@ -1,18 +1,34 @@
+import { StyleSystemProvider } from "@architecture-it/stylesystem";
+import { DescriptionCard } from "@architecture-it/stylesystem/DescriptionCard";
 import { ProductoProps } from "./ProductoInterface";
 import "./ProductoTarjeta.css";
 
 function ProductoTarjeta({
+  id,
   nombre,
   descripcion,
   precio,
   imagen,
 }: ProductoProps) {
   return (
-    <div className="tarjeta">
-      <img src={imagen} alt="zorro" />
-      <h2 className="nombre_producto">{nombre}</h2>
-      <p className="descripcion_producto">{descripcion}</p>
-      <h2 className="precio">{precio}</h2>
+    <div className="product" id={"" + id}>
+      <StyleSystemProvider>
+        <DescriptionCard
+          description={descripcion}
+          imageProps={{
+            alt: nombre,
+            height: 300,
+            src: imagen,
+            width: 300,
+          }}
+          color="primary"
+          onClick={() => {}}
+          redirectText="Comprar"
+          subtitle={"" + precio}
+          title={nombre}
+          url="/"
+        />
+      </StyleSystemProvider>
     </div>
   );
 }
