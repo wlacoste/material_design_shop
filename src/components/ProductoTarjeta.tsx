@@ -24,7 +24,7 @@ function ProductoTarjeta({
           color="primary"
           onClick={() => {}}
           redirectText="Comprar"
-          subtitle={"" + precio}
+          subtitle={"Precio: $" + precio}
           title={nombre}
           url="/"
           raised={true}

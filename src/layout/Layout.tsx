@@ -9,13 +9,7 @@ export default function RootLayout({ toggle }: RootLayoutProps) {
   return (
     <>
       <header>
-        <Header onClickButton={toggle}>
-          <nav>
-            <NavLink to="/">Home</NavLink>
-            <NavLink to="nuevo">NuevoProducto</NavLink>
-            <NavLink to="administrar">Administrar</NavLink>
-          </nav>
-        </Header>
+        <Header onClickButton={toggle}></Header>
       </header>
       <main className="main">
         <Outlet />

@@ -5,3 +5,15 @@
 :root {
   background-color: #fafafa;
 }
+
+.linkhover:hover {
+  width: 600px;
+  text-decoration: none;
+}
+.linkhover {
+  padding-left: 15px;
+  text-decoration: none;
+  font-family: "Ubuntu", "Roboto", sans-serif;
+  font-size: var(--title-4);
+  color: #d71920;
+}

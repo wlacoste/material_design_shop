@@ -1,3 +1,4 @@
+import { StyleSystemProvider } from "@architecture-it/stylesystem";
 import { Link } from "react-router-dom";
 
 interface LinkToggleSidebar {
@@ -8,8 +9,10 @@ interface LinkToggleSidebar {
 
 export function LinkToggleSidebar({ link, valor, toggle }: LinkToggleSidebar) {
   return (
-    <Link to={link} onClick={toggle}>
-      {valor}
-    </Link>
+    <StyleSystemProvider>
+      <Link className="linkhover" to={link} onClick={toggle}>
+        {valor}
+      </Link>
+    </StyleSystemProvider>
   );
 }

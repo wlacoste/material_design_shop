@@ -10,7 +10,11 @@ import {
   BrowserRouter,
 } from "react-router-dom";
 import ProductoTarjeta from "./components/ProductoTarjeta";
-import { Card } from "@architecture-it/stylesystem";
+import {
+  Button,
+  Card,
+  StyleSystemProvider,
+} from "@architecture-it/stylesystem";
 import { Header } from "@architecture-it/stylesystem";
 import { Sidebar } from "@architecture-it/stylesystem";
 import { useToggle } from "@architecture-it/stylesystem";
@@ -23,6 +27,7 @@ import guardarProducto from "./components/guardarProducto";
 import RootLayout from "./layout/Layout";
 import ListaProductos from "./components/administrarProductos";
 import { LinkToggleSidebar } from "./layout/LinkToggleSideBar";
+import { Box } from "@mui/material";
 
 const data = await GetProductos();
 
@@ -52,27 +57,51 @@ function App() {
 
   return (
     <>
-      <Sidebar
-        onClose={toggle}
-        onOpen={function noRefCheck() {}}
-        routes={[
-          {
-            item: [
-              <BrowserRouter>
-                <LinkToggleSidebar link="/" valor="Home" toggle={toggle} />
-                <LinkToggleSidebar
-                  link="administrar"
-                  valor="administrar"
-                  toggle={toggle}
-                />
-                {/* <Link to="/">Home</Link>,
-                <Link to="administrar">administrar</Link>, */}
-              </BrowserRouter>,
-            ],
-          },
-        ]}
-        open={isOpen}
-      />
+      <StyleSystemProvider>
+        <Sidebar
+          onClose={toggle}
+          onOpen={function noRefCheck() {}}
+          routes={[
+            {
+              item: (
+                <BrowserRouter>
+                  <Box marginY="15px" padding={0} width="100%">
+                    <LinkToggleSidebar link="/" valor="Home" toggle={toggle} />
+                  </Box>
+                </BrowserRouter>
+              ),
+              style: {
+                maxHeight: "90px",
+                maxWidth: "400px",
+                minWidth: "300px",
+              },
+            },
+            {
+              item: (
+                <BrowserRouter>
+                  <Box
+                    className="boxName"
+                    marginY="15px"
+                    padding={0}
+                    width="100%"
+                  >
+                    <LinkToggleSidebar
+                      link="administrar"
+                      valor="Administrar"
+                      toggle={toggle}
+                    />
+                  </Box>
+                </BrowserRouter>
+              ),
+              style: {
+                maxHeight: "90px",
+                maxWidth: "400px",
+              },
+            },
+          ]}
+          open={isOpen}
+        />
+      </StyleSystemProvider>
       <RouterProvider router={router} />
     </>
   );
