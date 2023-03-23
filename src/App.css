@@ -1,5 +1,10 @@
 .grilla_tarjetas {
   display: flex;
+  height: 100%;
+  min-height: 750px;
+  align-items: center;
+  justify-content: center;
+  flex-wrap: wrap;
 }
 
 :root {
@@ -16,4 +21,10 @@
   font-family: "Ubuntu", "Roboto", sans-serif;
   font-size: var(--title-4);
   color: #d71920;
+}
+
+.footerventas {
+  position: relative;
+  bottom: 0;
+  width: 100%;
 }

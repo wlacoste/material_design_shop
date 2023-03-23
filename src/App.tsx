@@ -13,6 +13,7 @@ import ProductoTarjeta from "./components/ProductoTarjeta";
 import {
   Button,
   Card,
+  Footer,
   StyleSystemProvider,
 } from "@architecture-it/stylesystem";
 import { Header } from "@architecture-it/stylesystem";
@@ -27,7 +28,9 @@ import guardarProducto from "./components/guardarProducto";
 import RootLayout from "./layout/Layout";
 import ListaProductos from "./components/administrarProductos";
 import { LinkToggleSidebar } from "./layout/LinkToggleSideBar";
-import { Box } from "@mui/material";
+import { Box, Typography } from "@mui/material";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { FooterVentas } from "./layout/FooterVentas";
 
 const data = await GetProductos();
 
@@ -103,6 +106,10 @@ function App() {
         />
       </StyleSystemProvider>
       <RouterProvider router={router} />
+
+      <StyleSystemProvider>
+        <FooterVentas />
+      </StyleSystemProvider>
     </>
   );
 }
