@@ -22,6 +22,7 @@ import NuevoProducto from "./components/NuevoProducto";
 import guardarProducto from "./components/guardarProducto";
 import RootLayout from "./layout/Layout";
 import ListaProductos from "./components/administrarProductos";
+import { LinkToggleSidebar } from "./layout/LinkToggleSideBar";
 
 const data = await GetProductos();
 
@@ -58,8 +59,14 @@ function App() {
           {
             item: [
               <BrowserRouter>
-                <Link to="/">Home</Link>,
-                <Link to="administrar">administrar</Link>,
+                <LinkToggleSidebar link="/" valor="Home" toggle={toggle} />
+                <LinkToggleSidebar
+                  link="administrar"
+                  valor="administrar"
+                  toggle={toggle}
+                />
+                {/* <Link to="/">Home</Link>,
+                <Link to="administrar">administrar</Link>, */}
               </BrowserRouter>,
             ],
           },

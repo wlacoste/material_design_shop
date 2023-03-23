@@ -17,7 +17,7 @@ export default function RootLayout({ toggle }: RootLayoutProps) {
           </nav>
         </Header>
       </header>
-      <main>
+      <main className="main">
         <Outlet />
       </main>
     </>

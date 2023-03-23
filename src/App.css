@@ -1,3 +1,7 @@
 .grilla_tarjetas {
   display: flex;
 }
+
+:root {
+  background-color: #fafafa;
+}
