@@ -7,12 +7,13 @@ import {
   NavLink,
   createRoutesFromElements,
   RouterProvider,
+  BrowserRouter,
 } from "react-router-dom";
 import ProductoTarjeta from "./components/ProductoTarjeta";
 import { Card } from "@architecture-it/stylesystem";
 import { Header } from "@architecture-it/stylesystem";
 import { Sidebar } from "@architecture-it/stylesystem";
-
+import { useToggle } from "@architecture-it/stylesystem";
 import "./App.css";
 import { ProductoProps } from "./components/ProductoInterface";
 import ListaTarjetas from "./components/ListaTarjetas";
@@ -28,10 +29,11 @@ function App() {
   const [productos, setProductos] = useState<ProductoProps[]>(
     data as ProductoProps[]
   );
+  const [isOpen, { toggle }] = useToggle(false);
 
   const router = createBrowserRouter(
     createRoutesFromElements(
-      <Route path="/" element={<RootLayout />}>
+      <Route path="/" element={<RootLayout toggle={toggle} />}>
         <Route index element={<ListaTarjetas productos={productos} />} />
         <Route
           path="nuevo"
@@ -49,6 +51,21 @@ function App() {
 
   return (
     <>
+      <Sidebar
+        onClose={toggle}
+        onOpen={function noRefCheck() {}}
+        routes={[
+          {
+            item: [
+              <BrowserRouter>
+                <Link to="/">Home</Link>,
+                <Link to="administrar">administrar</Link>,
+              </BrowserRouter>,
+            ],
+          },
+        ]}
+        open={isOpen}
+      />
       <RouterProvider router={router} />
     </>
   );

@@ -15,3 +15,8 @@
   width: 300px;
   height: 600px;
 }
+
+.productoItem {
+  background-color: aquamarine;
+  margin-left: 200px;
+}

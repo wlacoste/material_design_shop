@@ -27,6 +27,8 @@ function ProductoTarjeta({
           subtitle={"" + precio}
           title={nombre}
           url="/"
+          raised={true}
+          variant="outlined"
         />
       </StyleSystemProvider>
     </div>

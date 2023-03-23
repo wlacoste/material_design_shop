@@ -1,11 +1,15 @@
+import { Sidebar } from "@architecture-it/stylesystem";
 import { Header } from "@architecture-it/stylesystem/Header";
 import { NavLink, Outlet } from "react-router-dom";
 
-export default function RootLayout() {
+interface RootLayoutProps {
+  toggle: () => void;
+}
+export default function RootLayout({ toggle }: RootLayoutProps) {
   return (
-    <div>
+    <>
       <header>
-        <Header onClickButton={() => {}}>
+        <Header onClickButton={toggle}>
           <nav>
             <NavLink to="/">Home</NavLink>
             <NavLink to="nuevo">NuevoProducto</NavLink>
@@ -16,6 +20,6 @@ export default function RootLayout() {
       <main>
         <Outlet />
       </main>
-    </div>
+    </>
   );
 }
