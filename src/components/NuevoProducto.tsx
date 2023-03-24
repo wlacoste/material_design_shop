@@ -1,69 +1,65 @@
 import ProductoTarjeta from "./ProductoTarjeta";
 
 import React, { useState } from "react";
+import ModificarProducto from "./ModificarProducto";
+import {
+  Button,
+  Modal,
+  StyleSystemProvider,
+  useToggle,
+} from "@architecture-it/stylesystem";
+import { ProductoProps } from "./ProductoInterface";
+import guardarProducto from "./guardarProducto";
 
 interface NuevoProductoProps {
-  onSubmit: (
-    nombre: string,
-    descripcion: string,
-    number: number,
-    imagen: string
-  ) => void;
+  fetchProductos: () => void;
 }
 
-const NuevoProducto: React.FC<NuevoProductoProps> = ({ onSubmit }) => {
-  const [nombre, setNombre] = useState("");
-  const [descripcion, setDescripcion] = useState("");
-  const [precio, setPrecio] = useState(0);
-  const [imagen, setImagen] = useState("");
-
-  const handleNombreChange = (event: React.ChangeEvent<HTMLInputElement>) => {
-    setNombre(event.target.value);
+function NuevoProducto({ fetchProductos }: NuevoProductoProps) {
+  const [isOpen, { toggle }] = useToggle(false);
+  let producto: ProductoProps = {
+    id: 0,
+    nombre: "",
+    descripcion: "",
+    imagen: "",
+    precio: 0,
   };
-
-  const handleDescripcionChange = (
-    event: React.ChangeEvent<HTMLInputElement>
-  ) => {
-    setDescripcion(event.target.value);
-  };
-  const handleImagenChange = (event: React.ChangeEvent<HTMLInputElement>) => {
-    setImagen(event.target.value);
-  };
-
-  const handlePrecioChange = (event: React.ChangeEvent<HTMLInputElement>) => {
-    setPrecio(Number(event.target.value));
-  };
-
-  const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
-    event.preventDefault();
-    onSubmit(nombre, descripcion, precio, imagen);
-  };
-
   return (
-    <form onSubmit={handleSubmit}>
-      <label>
-        nombre:
-        <input type="text" value={nombre} onChange={handleNombreChange} />
-      </label>
-      <label>
-        Descripcion:
-        <input
-          type="text"
-          value={descripcion}
-          onChange={handleDescripcionChange}
+    <>
+      <StyleSystemProvider>
+        <Button
+          style={{ margin: "10px" }}
+          key="2"
+          size="large"
+          text="Nuevo Producto"
+          variant="contained"
+          onClick={() => editarProductoModal(toggle, isOpen)}
         />
-      </label>
-      <label>
-        Precio:
-        <input type="number" value={precio} onChange={handlePrecioChange} />
-      </label>
-      <label>
-        Imagen:
-        <input type="text" value={imagen} onChange={handleImagenChange} />
-      </label>
-      <button type="submit">Submit</button>
-    </form>
+        <Modal
+          className="modal"
+          // Tu funcion para cerrar el modal
+          handleClose={toggle}
+          title={"Nuevo producto: "}
+          open={isOpen}
+          content={
+            <>
+              <ModificarProducto
+                producto={producto}
+                onSubmit={guardarProducto}
+                dismiss={toggle}
+                fetchProductos={fetchProductos}
+              />
+            </>
+          }
+        />
+      </StyleSystemProvider>
+    </>
   );
+}
+
+const editarProductoModal = (toggle: () => void, isOpen: boolean) => {
+  toggle();
+  console.log(isOpen);
 };
 
 export default NuevoProducto;

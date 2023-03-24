@@ -28,15 +28,7 @@ function ListaProductos({ productos, setProductos }: ListaTarjetasProps) {
 
   return (
     <>
-      <table className="tablaProductos">
-        <thead>
-          <th>Id</th>
-          <th>Nombre</th>
-          <th>Descripcion</th>
-          <th>Imagen</th>
-          <th>Precio</th>
-        </thead>
-      </table>
+      <NuevoProducto fetchProductos={fetchProductos} />
       {tarjetas}
       <ToastContainer
         position="top-center"

@@ -44,10 +44,7 @@ function App() {
     createRoutesFromElements(
       <Route path="/" element={<RootLayout toggle={toggle} />}>
         <Route index element={<ListaTarjetas productos={productos} />} />
-        <Route
-          path="nuevo"
-          element={<NuevoProducto onSubmit={guardarProducto} />}
-        />
+
         <Route
           path="administrar"
           element={

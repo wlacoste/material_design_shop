@@ -62,7 +62,6 @@ const ModificarProducto: React.FC<ModificarProductoProps> = ({
     fetchProductos();
   };
 
-
   return (
     <form
       onSubmit={handleSubmit}
@@ -89,6 +88,7 @@ const ModificarProducto: React.FC<ModificarProductoProps> = ({
               value={nombre}
               onChange={handleNombreChange}
               variant="outlined"
+              required
             />
             <TextField
               style={{
@@ -100,16 +100,14 @@ const ModificarProducto: React.FC<ModificarProductoProps> = ({
               value={precio}
               onChange={handlePrecioChange}
               variant="outlined"
-              InputProps={{
-                startAdornment: (
-                  <InputAdornment position="end">$</InputAdornment>
-                ),
-              }}
+              required
+              inputProps={{ inputMode: "numeric", pattern: "[0-9]*" }}
             />
             <TextField
               style={{ display: "block", margin: "10px 0px 10px 0px" }}
               label="Imagen"
               value={imagen}
+              required
               onChange={handleImagenChange}
               variant="outlined"
             />
@@ -124,6 +122,7 @@ const ModificarProducto: React.FC<ModificarProductoProps> = ({
             value={descripcion}
             multiline={true}
             fullWidth
+            required
             onChange={handleDescripcionChange}
             variant="outlined"
             minRows={4}

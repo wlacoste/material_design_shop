@@ -27,6 +27,13 @@
       "precio": 788,
       "imagen": "https://randomfox.ca/images/75.jpg",
       "id": 5
+    },
+    {
+      "nombre": "Me gustan las cosas",
+      "descripcion": "Tener muchas cosas",
+      "precio": 5455,
+      "imagen": "https://randomfox.ca/images/112.jpg",
+      "id": 6
     }
   ]
 }
