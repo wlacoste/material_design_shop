@@ -1,6 +1,15 @@
 import ProductoTarjeta from "./ProductoTarjeta";
 
 import React, { useEffect, useState } from "react";
+import { ProductoProps } from "./ProductoInterface";
+import { Button, Input } from "@architecture-it/stylesystem";
+import {
+  Box,
+  InputAdornment,
+  TextareaAutosize,
+  TextField,
+} from "@mui/material";
+import { height, width } from "@mui/system";
 
 interface ModificarProductoProps {
   onSubmit: (
@@ -10,22 +19,22 @@ interface ModificarProductoProps {
     number: number,
     imagen: string
   ) => void;
-  idProducto: number;
+  producto: ProductoProps;
   dismiss: () => void;
   fetchProductos: () => void;
 }
 
 const ModificarProducto: React.FC<ModificarProductoProps> = ({
   onSubmit,
-  idProducto,
+  producto,
   dismiss,
   fetchProductos,
 }) => {
-  const [id, setId] = useState(0);
-  const [nombre, setNombre] = useState("");
-  const [descripcion, setDescripcion] = useState("");
-  const [precio, setPrecio] = useState(0);
-  const [imagen, setImagen] = useState("");
+  const [id, setId] = useState(producto.id);
+  const [nombre, setNombre] = useState(producto.nombre);
+  const [descripcion, setDescripcion] = useState(producto.descripcion);
+  const [precio, setPrecio] = useState(producto.precio);
+  const [imagen, setImagen] = useState(producto.imagen);
 
   const handleNombreChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     setNombre(event.target.value);
@@ -48,36 +57,110 @@ const ModificarProducto: React.FC<ModificarProductoProps> = ({
     event.preventDefault();
     console.log("mostrando dismiss");
     console.log(dismiss);
-
-    setId(idProducto);
     dismiss();
-    onSubmit(idProducto, nombre, descripcion, precio, imagen);
+    onSubmit(id, nombre, descripcion, precio, imagen);
     fetchProductos();
   };
 
+  const height = 44;
+
+  // magic number which must be set appropriately for height
+  const labelOffset = -6;
+
   return (
-    <form onSubmit={handleSubmit}>
-      <label>
-        nombre:
-        <input type="text" value={nombre} onChange={handleNombreChange} />
-      </label>
-      <label>
-        Descripcion:
-        <input
-          type="text"
-          value={descripcion}
-          onChange={handleDescripcionChange}
+    <form
+      onSubmit={handleSubmit}
+      className="formularioProducto"
+      style={{
+        display: "flex",
+        flexDirection: "row",
+        alignItems: "center",
+
+        width: "700px",
+        flexWrap: "wrap",
+        height: "100%",
+        padding: "0px 0px 0px 0px",
+        borderColor: "red",
+        margin: "0px 0px 2px 0px",
+      }}
+    >
+      <div style={{ display: "block", width: "100%" }}>
+        <div style={{ display: "flex", margin: "0px" }}>
+          <div style={{ display: "block" }}>
+            <TextField
+              style={{ display: "block", margin: "10px 0px 10px 0px" }}
+              label="Nombre"
+              value={nombre}
+              onChange={handleNombreChange}
+              variant="outlined"
+            />
+            <TextField
+              style={{
+                display: "block",
+                margin: "10px 0px 10px 0px",
+                textAlign: "right",
+              }}
+              label="Precio"
+              value={precio}
+              onChange={handlePrecioChange}
+              variant="outlined"
+              InputProps={{
+                startAdornment: (
+                  <InputAdornment position="end">$</InputAdornment>
+                ),
+              }}
+            />
+            <TextField
+              style={{ display: "block", margin: "10px 0px 10px 0px" }}
+              label="Imagen"
+              value={imagen}
+              onChange={handleImagenChange}
+              variant="outlined"
+            />
+          </div>
+          <TextField
+            style={{
+              display: "block",
+              margin: "10px 10px 10px 10px",
+              width: "70%",
+            }}
+            label="Descripcion"
+            value={descripcion}
+            multiline={true}
+            fullWidth
+            onChange={handleDescripcionChange}
+            variant="outlined"
+            minRows={4}
+            sx={{
+              width: { sm: 100, md: 300 },
+              "& .MuiInputBase-root": {
+                height: 150,
+              },
+            }}
+          />
+        </div>
+      </div>
+
+      <div style={{ display: "flex", width: "100%", margin: "10px 10px" }}>
+        <Button
+          style={{ marginRight: "10px" }}
+          key="2"
+          fullWidth
+          size="large"
+          text="Cancelar"
+          variant="outlined"
+          onClick={dismiss}
         />
-      </label>
-      <label>
-        Precio:
-        <input type="number" value={precio} onChange={handlePrecioChange} />
-      </label>
-      <label>
-        Imagen:
-        <input type="text" value={imagen} onChange={handleImagenChange} />
-      </label>
-      <button type="submit">Submit</button>
+        <Button
+          style={{ marginLeft: "10px" }}
+          key="1"
+          fullWidth
+          size="large"
+          text="Guardar"
+          variant="contained"
+          type="submit"
+        />
+      </div>
     </form>
   );
 };

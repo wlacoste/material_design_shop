@@ -77,6 +77,7 @@ function App() {
                 maxHeight: "90px",
                 maxWidth: "400px",
                 minWidth: "300px",
+                transitionDuration: "500ms",
               },
             },
             {
@@ -99,6 +100,7 @@ function App() {
               style: {
                 maxHeight: "90px",
                 maxWidth: "400px",
+                transitionDuration: "500ms",
               },
             },
           ]}

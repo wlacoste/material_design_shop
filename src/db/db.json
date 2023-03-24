@@ -1,17 +1,17 @@
 {
   "productos": [
     {
-      "nombre": "Mocachino",
-      "descripcion": "1. f. Esp. Calzado hecho generalmente con piel o lona y suela de goma, que se ata con cordones o se sujeta con velcro, y se usa para practicar algunos deportes.",
+      "nombre": "Mocachinos",
+      "descripcion": "1. f. Esp. Calzado hecho generalmente con piel o lona y suela de goma, que se ata con cordones o se sujeta con velcro, y se usa para practicar algunos deportes.sdfsds",
       "precio": 123,
       "imagen": "https://randomfox.ca/images/27.jpg",
       "id": 2
     },
     {
-      "nombre": "Bolososos",
-      "descripcion": "para llevvar muchas cosasa",
-      "precio": 32232,
-      "imagen": "https://randomfox.ca/images/15.jpg",
+      "nombre": "Bolsososos",
+      "descripcion": "Para cosas maravillorar",
+      "precio": 564,
+      "imagen": "https://randomfox.ca/images/66.jpg",
       "id": 3
     },
     {

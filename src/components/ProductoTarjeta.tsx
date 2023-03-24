@@ -1,5 +1,6 @@
 import { StyleSystemProvider } from "@architecture-it/stylesystem";
 import { DescriptionCard } from "@architecture-it/stylesystem/DescriptionCard";
+import { useState } from "react";
 import { ProductoProps } from "./ProductoInterface";
 import "./ProductoTarjeta.css";
 
