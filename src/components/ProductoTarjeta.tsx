@@ -1,7 +1,7 @@
 import { Alert, StyleSystemProvider } from "@architecture-it/stylesystem";
 import { DescriptionCard } from "@architecture-it/stylesystem/DescriptionCard";
 import { Typography } from "@mui/material";
-import { Dispatch, SetStateAction, useState } from "react";
+import { Dispatch, MouseEventHandler, SetStateAction, useState } from "react";
 import { toast, ToastContainer } from "react-toastify";
 import { ProductoProps } from "./ProductoInterface";
 import "./ProductoTarjeta.css";
@@ -11,6 +11,8 @@ function ProductoTarjeta(
   setCarrito: Dispatch<SetStateAction<number>>,
   carrito: number
 ) {
+  let dimension = 300;
+
   return (
     <div className="product" id={"" + id}>
       <StyleSystemProvider>
@@ -18,9 +20,9 @@ function ProductoTarjeta(
           description={descripcion}
           imageProps={{
             alt: nombre,
-            height: 300,
+            height: dimension,
             src: imagen,
-            width: 300,
+            width: dimension,
           }}
           color="primary"
           onClick={() => {
