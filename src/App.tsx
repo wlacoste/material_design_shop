@@ -40,11 +40,24 @@ function App() {
   );
   const [isOpen, { toggle }] = useToggle(false);
 
+  const [carrito, setCarrito] = useState(0);
+
   const router = createBrowserRouter(
     createRoutesFromElements(
-      <Route path="/" element={<RootLayout toggle={toggle} />}>
-        <Route index element={<ListaTarjetas productos={productos} />} />
-
+      <Route
+        path="/"
+        element={<RootLayout toggle={toggle} numeroCarrito={carrito} />}
+      >
+        <Route
+          index
+          element={
+            <ListaTarjetas
+              productos={productos}
+              setCarrito={setCarrito}
+              carrito={carrito}
+            />
+          }
+        />
         <Route
           path="administrar"
           element={

@@ -1,16 +1,14 @@
 import { StyleSystemProvider } from "@architecture-it/stylesystem";
 import { DescriptionCard } from "@architecture-it/stylesystem/DescriptionCard";
-import { useState } from "react";
+import { Dispatch, SetStateAction, useState } from "react";
 import { ProductoProps } from "./ProductoInterface";
 import "./ProductoTarjeta.css";
 
-function ProductoTarjeta({
-  id,
-  nombre,
-  descripcion,
-  precio,
-  imagen,
-}: ProductoProps) {
+function ProductoTarjeta(
+  { id, nombre, descripcion, precio, imagen }: ProductoProps,
+  setCarrito: Dispatch<SetStateAction<number>>,
+  carrito: number
+) {
   return (
     <div className="product" id={"" + id}>
       <StyleSystemProvider>
@@ -23,7 +21,7 @@ function ProductoTarjeta({
             width: 300,
           }}
           color="primary"
-          onClick={() => {}}
+          onClick={() => setCarrito(carrito + 1)}
           redirectText="Comprar"
           subtitle={"Precio: $" + precio}
           title={nombre}
