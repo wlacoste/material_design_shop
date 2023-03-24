@@ -62,10 +62,6 @@ const ModificarProducto: React.FC<ModificarProductoProps> = ({
     fetchProductos();
   };
 
-  const height = 44;
-
-  // magic number which must be set appropriately for height
-  const labelOffset = -6;
 
   return (
     <form
