@@ -32,19 +32,25 @@ function ProductoDetalle(producto: ProductoProps, fetchProductos: () => void) {
               <h3>Id</h3>
               <h4>{producto.id}</h4>
             </div>
-            <div style={{ width: "25%" }}>
+            <div style={{ width: "20%" }}>
               <h3>Nombre</h3>
               <h4>{producto.nombre}</h4>
             </div>
-            <div style={{ width: "50%" }}>
+            <div style={{ width: "55%", paddingRight: "10px" }}>
               <h3>Descripcion</h3>
               <p>{producto.descripcion}</p>
             </div>
-            <div style={{ width: "15%" }}>
+            <div
+              style={{
+                width: "15%",
+                paddingLeft: "10px",
+                paddingRight: "10px",
+              }}
+            >
               <h3>Imagen</h3>
               <a href="{producto.imagen}">{producto.imagen}</a>
             </div>
-            <div>
+            <div style={{ paddingLeft: "10px" }}>
               <h3>Precio</h3>
               <h4>{producto.precio}</h4>
             </div>

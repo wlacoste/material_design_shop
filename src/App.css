@@ -38,3 +38,37 @@
 .formularioProducto::-webkit-scrollbar {
   display: none;
 }
+
+.productoItem {
+  font-family: "Ubuntu", "Roboto", sans-serif;
+  color: #757575;
+}
+
+#numeroCarrito {
+  font-family: "Ubuntu", "Roboto", sans-serif;
+  color: #d71920;
+  font-weight: 500;
+}
+
+.iconos {
+  margin-left: auto;
+  margin-right: auto;
+  align-items: center;
+  align-items: center;
+  justify-content: center;
+}
+
+#carrito {
+  color: #d71920;
+  height: 50px;
+  align-items: center;
+  position: absolute;
+  display: flex;
+  text-align: center;
+  top: 10px;
+  left: 90vw;
+  z-index: 10;
+  padding-left: 15px;
+  border-radius: 25px;
+  box-shadow: 0 3px 6px rgba(0, 0, 0, 0.1019607843);
+}

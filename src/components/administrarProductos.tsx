@@ -10,6 +10,7 @@ import GetProductos from "../servicio/GetProductos";
 import EliminarProducto from "./EliminarProducto";
 import deleteProducto from "../servicio/DeleteProducto";
 import ProductoDetalle from "./ProductoDetalle";
+import { Carrito } from "./Carrito";
 interface ListaTarjetasProps {
   productos: ProductoProps[];
   setProductos: React.Dispatch<React.SetStateAction<ProductoProps[]>>;

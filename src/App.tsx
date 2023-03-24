@@ -44,10 +44,7 @@ function App() {
 
   const router = createBrowserRouter(
     createRoutesFromElements(
-      <Route
-        path="/"
-        element={<RootLayout toggle={toggle} numeroCarrito={carrito} />}
-      >
+      <Route path="/" element={<RootLayout toggle={toggle} />}>
         <Route
           index
           element={

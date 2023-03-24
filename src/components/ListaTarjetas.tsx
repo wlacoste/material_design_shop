@@ -1,4 +1,5 @@
 import { Dispatch, SetStateAction } from "react";
+import { Carrito } from "./Carrito";
 import { ProductoProps } from "./ProductoInterface";
 import ProductoTarjeta from "./ProductoTarjeta";
 
@@ -13,7 +14,12 @@ function ListaTarjetas({ productos, setCarrito, carrito }: ListaTarjetasProps) {
     ProductoTarjeta(producto, setCarrito, carrito)
   );
 
-  return <div className="grilla_tarjetas">{tarjetas}</div>;
+  return (
+    <>
+      <Carrito numeroCarrito={carrito} />
+      <div className="grilla_tarjetas">{tarjetas}</div>;
+    </>
+  );
 }
 
 export default ListaTarjetas;

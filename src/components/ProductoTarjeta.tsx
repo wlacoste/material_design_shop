@@ -1,6 +1,8 @@
-import { StyleSystemProvider } from "@architecture-it/stylesystem";
+import { Alert, StyleSystemProvider } from "@architecture-it/stylesystem";
 import { DescriptionCard } from "@architecture-it/stylesystem/DescriptionCard";
+import { Typography } from "@mui/material";
 import { Dispatch, SetStateAction, useState } from "react";
+import { toast, ToastContainer } from "react-toastify";
 import { ProductoProps } from "./ProductoInterface";
 import "./ProductoTarjeta.css";
 
@@ -21,7 +23,14 @@ function ProductoTarjeta(
             width: 300,
           }}
           color="primary"
-          onClick={() => setCarrito(carrito + 1)}
+          onClick={() => {
+            toast.success(nombre + " añadido al carrito", {
+              position: toast.POSITION.TOP_CENTER,
+              autoClose: 400,
+              hideProgressBar: true,
+            });
+            setCarrito(carrito + 1);
+          }}
           redirectText="Comprar"
           subtitle={"Precio: $" + precio}
           title={nombre}
@@ -29,6 +38,7 @@ function ProductoTarjeta(
           raised={true}
           variant="outlined"
         />
+        <ToastContainer />
       </StyleSystemProvider>
     </div>
   );
