@@ -19,12 +19,8 @@ import { LinkToggleSidebar } from "./layout/LinkToggleSideBar";
 import { Box } from "@mui/material";
 import { FooterVentas } from "./layout/FooterVentas";
 
-const data = await GetProductos();
-
 function App() {
-  const [productos, setProductos] = useState<ProductoProps[]>(
-    data as ProductoProps[]
-  );
+  const [productos, setProductos] = useState<ProductoProps[]>([]);
   const [isOpen, { toggle }] = useToggle(false);
 
   const [carrito, setCarrito] = useState(0);
