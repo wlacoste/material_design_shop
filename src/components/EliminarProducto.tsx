@@ -2,22 +2,28 @@ import { Button } from "@architecture-it/stylesystem";
 import React, { MouseEventHandler } from "react";
 
 interface EliminarProductoProps {
-  onSubmit: (id: number) => void;
+  onSubmit: (
+    id: number,
+    setToggle: React.Dispatch<React.SetStateAction<boolean>>
+  ) => void;
   idProducto: number;
   dismiss: () => void;
+  setToggle: React.Dispatch<React.SetStateAction<boolean>>;
 }
 
 const EliminarProducto: React.FC<EliminarProductoProps> = ({
   onSubmit,
   idProducto,
   dismiss,
+  setToggle,
 }) => {
-  const handleSubmit = (event: any) => {
+  const handleSubmit = async (event: any) => {
     event.preventDefault();
     console.log(dismiss);
-    dismiss();
     console.log("eliminando producto " + idProducto);
-    onSubmit(idProducto);
+    onSubmit(idProducto, setToggle);
+    setToggle((prevState) => !prevState);
+    dismiss();
   };
   return (
     <>

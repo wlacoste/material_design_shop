@@ -1,15 +1,7 @@
-import ProductoTarjeta from "./ProductoTarjeta";
-
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 import { ProductoProps } from "./ProductoInterface";
-import { Button, Input } from "@architecture-it/stylesystem";
-import {
-  Box,
-  InputAdornment,
-  TextareaAutosize,
-  TextField,
-} from "@mui/material";
-import { height, width } from "@mui/system";
+import { Button } from "@architecture-it/stylesystem";
+import { TextField } from "@mui/material";
 
 interface ModificarProductoProps {
   onSubmit: (
@@ -17,18 +9,19 @@ interface ModificarProductoProps {
     nombre: string,
     descripcion: string,
     number: number,
-    imagen: string
+    imagen: string,
+    setToggle: React.Dispatch<React.SetStateAction<boolean>>
   ) => void;
   producto: ProductoProps;
   dismiss: () => void;
-  fetchProductos: () => void;
+  setToggle: React.Dispatch<React.SetStateAction<boolean>>;
 }
 
 const ModificarProducto: React.FC<ModificarProductoProps> = ({
   onSubmit,
   producto,
   dismiss,
-  fetchProductos,
+  setToggle,
 }) => {
   const [id, setId] = useState(producto.id);
   const [nombre, setNombre] = useState(producto.nombre);
@@ -53,13 +46,10 @@ const ModificarProducto: React.FC<ModificarProductoProps> = ({
     setPrecio(Number(event.target.value));
   };
 
-  const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
+  const handleSubmit = async (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
-    console.log("mostrando dismiss");
-    console.log(dismiss);
     dismiss();
-    onSubmit(id, nombre, descripcion, precio, imagen);
-    fetchProductos();
+    onSubmit(id, nombre, descripcion, precio, imagen, setToggle);
   };
 
   return (

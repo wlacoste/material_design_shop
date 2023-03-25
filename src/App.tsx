@@ -1,35 +1,22 @@
 import { useEffect, useState } from "react";
 import {
   createBrowserRouter,
-  Routes,
   Route,
-  Link,
-  NavLink,
   createRoutesFromElements,
   RouterProvider,
   BrowserRouter,
 } from "react-router-dom";
-import ProductoTarjeta from "./components/ProductoTarjeta";
-import {
-  Button,
-  Card,
-  Footer,
-  StyleSystemProvider,
-} from "@architecture-it/stylesystem";
-import { Header } from "@architecture-it/stylesystem";
+import { StyleSystemProvider } from "@architecture-it/stylesystem";
 import { Sidebar } from "@architecture-it/stylesystem";
 import { useToggle } from "@architecture-it/stylesystem";
 import "./App.css";
 import { ProductoProps } from "./components/ProductoInterface";
 import ListaTarjetas from "./components/ListaTarjetas";
 import GetProductos from "./servicio/GetProductos";
-import NuevoProducto from "./components/NuevoProducto";
-import guardarProducto from "./components/guardarProducto";
 import RootLayout from "./layout/Layout";
 import ListaProductos from "./components/administrarProductos";
 import { LinkToggleSidebar } from "./layout/LinkToggleSideBar";
-import { Box, Typography } from "@mui/material";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { Box } from "@mui/material";
 import { FooterVentas } from "./layout/FooterVentas";
 
 const data = await GetProductos();
@@ -42,28 +29,67 @@ function App() {
 
   const [carrito, setCarrito] = useState(0);
 
-  const router = createBrowserRouter(
-    createRoutesFromElements(
-      <Route path="/" element={<RootLayout toggle={toggle} />}>
-        <Route
-          index
-          element={
-            <ListaTarjetas
-              productos={productos}
-              setCarrito={setCarrito}
-              carrito={carrito}
-            />
-          }
-        />
-        <Route
-          path="administrar"
-          element={
-            <ListaProductos productos={productos} setProductos={setProductos} />
-          }
-        />
-      </Route>
+  const [changeToggle, setToggle] = useState(false);
+
+  const [routers, setRoutes] = useState(
+    createBrowserRouter(
+      createRoutesFromElements(
+        <Route path="/" element={<RootLayout toggle={toggle} />}>
+          <Route
+            index
+            element={
+              <ListaTarjetas
+                productos={productos}
+                setCarrito={setCarrito}
+                carrito={carrito}
+              />
+            }
+          />
+          <Route
+            path="administrar"
+            element={
+              <ListaProductos productos={productos} setToggle={setToggle} />
+            }
+          />
+        </Route>
+      )
     )
   );
+
+  useEffect(() => {
+    const fetchData = async () => {
+      const datos = await GetProductos();
+      await setProductos(datos);
+    };
+
+    fetchData().catch(console.error);
+  }, [changeToggle]);
+
+  useEffect(() => {
+    const router = createBrowserRouter(
+      createRoutesFromElements(
+        <Route path="/" element={<RootLayout toggle={toggle} />}>
+          <Route
+            index
+            element={
+              <ListaTarjetas
+                productos={productos}
+                setCarrito={setCarrito}
+                carrito={carrito}
+              />
+            }
+          />
+          <Route
+            path="administrar"
+            element={
+              <ListaProductos productos={productos} setToggle={setToggle} />
+            }
+          />
+        </Route>
+      )
+    );
+    setRoutes(router);
+  }, [productos, isOpen, carrito]);
 
   return (
     <>
@@ -114,7 +140,7 @@ function App() {
           open={isOpen}
         />
       </StyleSystemProvider>
-      <RouterProvider router={router} />
+      <RouterProvider router={routers} />
 
       <StyleSystemProvider>
         <FooterVentas />

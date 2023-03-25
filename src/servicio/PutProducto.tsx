@@ -1,15 +1,16 @@
 import axios from "axios";
 
-function putProducto(
+async function putProducto(
   id: number,
   nombre: string,
   descripcion: string,
   precio: number,
-  imagen: string
+  imagen: string,
+  setToggle: React.Dispatch<React.SetStateAction<boolean>>
 ) {
   console.log("por guardar los valores");
   console.log(id, nombre, descripcion, precio, imagen);
-  axios
+  await axios
     .put("http://localhost:3000/productos/" + id, {
       nombre: nombre,
       descripcion: descripcion,
@@ -17,6 +18,8 @@ function putProducto(
       imagen: imagen,
     })
     .then(function (response: any) {
+      setToggle((prevState) => !prevState);
+
       console.log(response);
     })
     .catch(function (error: any) {

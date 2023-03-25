@@ -12,10 +12,10 @@ import { ProductoProps } from "./ProductoInterface";
 import guardarProducto from "./guardarProducto";
 
 interface NuevoProductoProps {
-  fetchProductos: () => void;
+  setToggle: React.Dispatch<React.SetStateAction<boolean>>;
 }
 
-function NuevoProducto({ fetchProductos }: NuevoProductoProps) {
+const NuevoProducto: React.FC<NuevoProductoProps> = ({ setToggle }) => {
   const [isOpen, { toggle }] = useToggle(false);
   let producto: ProductoProps = {
     id: 0,
@@ -33,7 +33,7 @@ function NuevoProducto({ fetchProductos }: NuevoProductoProps) {
           size="large"
           text="Nuevo Producto"
           variant="contained"
-          onClick={() => editarProductoModal(toggle, isOpen)}
+          onClick={toggle}
         />
         <Modal
           className="modal"
@@ -44,10 +44,10 @@ function NuevoProducto({ fetchProductos }: NuevoProductoProps) {
           content={
             <>
               <ModificarProducto
-                producto={producto}
                 onSubmit={guardarProducto}
+                producto={producto}
                 dismiss={toggle}
-                fetchProductos={fetchProductos}
+                setToggle={setToggle}
               />
             </>
           }
@@ -55,11 +55,6 @@ function NuevoProducto({ fetchProductos }: NuevoProductoProps) {
       </StyleSystemProvider>
     </>
   );
-}
-
-const editarProductoModal = (toggle: () => void, isOpen: boolean) => {
-  toggle();
-  console.log(isOpen);
 };
 
 export default NuevoProducto;

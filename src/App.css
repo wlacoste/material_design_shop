@@ -56,10 +56,12 @@
   align-items: center;
   align-items: center;
   justify-content: center;
+  animation-duration: 3s;
 }
 
 #carrito {
   color: #d71920;
+  background-color: white;
   height: 50px;
   align-items: center;
   position: absolute;
@@ -70,5 +72,10 @@
   z-index: 10;
   padding-left: 15px;
   border-radius: 25px;
-  box-shadow: 0 3px 6px rgba(0, 0, 0, 0.1019607843);
+  box-shadow: 0 3px 6px rgba(0, 0, 0, 0.12);
+}
+
+#carrito:hover {
+  transform: scale(1.1);
+  transition-duration: 150ms;
 }

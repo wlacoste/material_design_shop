@@ -12,7 +12,10 @@ import EliminarProducto from "./EliminarProducto";
 import ModificarProducto from "./ModificarProducto";
 import { ProductoProps } from "./ProductoInterface";
 
-function ProductoDetalle(producto: ProductoProps, fetchProductos: () => void) {
+function ProductoDetalle(
+  producto: ProductoProps,
+  setToggle: React.Dispatch<React.SetStateAction<boolean>>
+) {
   const [isOpen, { toggle }] = useToggle(false);
   const [isOpenEliminar, setEliminar] = useState(false);
 
@@ -93,7 +96,7 @@ function ProductoDetalle(producto: ProductoProps, fetchProductos: () => void) {
                 producto={producto}
                 onSubmit={putProducto}
                 dismiss={toggle}
-                fetchProductos={fetchProductos}
+                setToggle={setToggle}
               />
             </>
           }
@@ -109,6 +112,7 @@ function ProductoDetalle(producto: ProductoProps, fetchProductos: () => void) {
                 onSubmit={deleteProducto}
                 idProducto={producto.id}
                 dismiss={togleEliminar}
+                setToggle={setToggle}
               />
             </>
           }
@@ -117,19 +121,5 @@ function ProductoDetalle(producto: ProductoProps, fetchProductos: () => void) {
     </>
   );
 }
-
-const eliminarProductoToast = (id: number, fetchProductos: () => void) => {
-  const dismiss = () => toast.dismiss(this);
-  toast(
-    <>
-      <h2>Eliminando {id}</h2>
-      <EliminarProducto
-        onSubmit={deleteProducto}
-        idProducto={id}
-        dismiss={dismiss}
-      />
-    </>
-  );
-};
 
 export default ProductoDetalle;
