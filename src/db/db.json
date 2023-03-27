@@ -1,17 +1,17 @@
 {
   "productos": [
     {
-      "nombre": "Cafes",
-      "descripcion": "1. f. Esp. Calzado hecho generalmente con piel o lona y suela de goma, que se at",
+      "nombre": "Zapatos",
+      "descripcion": "1. f. Esp. Calzado hecho generalmente con piel o lona y suela de goma. Sirve para caminar,nadar y otras actividades.",
       "precio": 4554,
-      "imagen": "https://randomfox.ca/images/27.jpg",
+      "imagen": "https://http2.mlstatic.com/D_NQ_NP_889262-MLA41489039320_042020-O.jpg",
       "id": 2
     },
     {
-      "nombre": "Bolsoso",
+      "nombre": "Bolsos",
       "descripcion": "Para cosas maravillorarPara cosas maravillorarPara cosas maravillorarPara cosas maravillorar",
       "precio": 564,
-      "imagen": "https://randomfox.ca/images/66.jpg",
+      "imagen": "https://cartersarg.vtexassets.com/arquivos/ids/234929-800-auto?v=637969479178200000&width=800&height=auto&aspect=true",
       "id": 3
     },
     {
@@ -22,24 +22,24 @@
       "id": 4
     },
     {
-      "nombre": "cosas",
+      "nombre": "Auriculares",
       "descripcion": "para variados usos",
       "precio": 788,
-      "imagen": "https://randomfox.ca/images/75.jpg",
+      "imagen": "https://d3ugyf2ht6aenh.cloudfront.net/stores/001/344/643/products/78dc2786-d2f4-4778-a40f-4835f6e32a65-17cd32b8c61694924b16505521247760-640-0.jpeg",
       "id": 5
     },
     {
-      "nombre": "Me gustan las cosas",
+      "nombre": "Cafetera",
       "descripcion": "Tener muchas cosas",
       "precio": 5455,
-      "imagen": "https://randomfox.ca/images/112.jpg",
+      "imagen": "https://tccommercear.vtexassets.com/arquivos/ids/156269/EP1220-1.jpg?v=637970536358330000",
       "id": 6
     },
     {
-      "nombre": "Cafe",
-      "descripcion": "lalals,da",
+      "nombre": "Medialunas",
+      "descripcion": "Para comer con cafe, jugo de naranja, con jamos y queso. Y mucho mas",
       "precio": 4546,
-      "imagen": "https://randomfox.ca/images/27.jpg",
+      "imagen": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTjGliRD2c70-mOzOf6EOsgcQOIk_XroORAZA&usqp=CAU",
       "id": 7
     },
     {

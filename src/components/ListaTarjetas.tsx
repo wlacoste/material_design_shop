@@ -10,10 +10,19 @@ interface ListaTarjetasProps {
 }
 
 function ListaTarjetas({ productos, setCarrito, carrito }: ListaTarjetasProps) {
-  const tarjetas = productos.map((producto, index) =>
+  const tarjetas = productos.map((producto, index) => (
     // ProductoTarjeta(producto, setCarrito, carrito)
-    <ProductoTarjeta key={index} id={producto.id} nombre={producto.nombre} descripcion={producto.descripcion} precio={producto.precio} imagen={producto.imagen}/>
-  );
+    <ProductoTarjeta
+      key={index}
+      id={producto.id}
+      nombre={producto.nombre}
+      descripcion={producto.descripcion}
+      precio={producto.precio}
+      imagen={producto.imagen}
+      setCarrito={setCarrito}
+      carrito={carrito}
+    />
+  ));
 
   return (
     <>

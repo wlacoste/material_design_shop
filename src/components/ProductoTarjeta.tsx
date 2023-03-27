@@ -12,11 +12,25 @@ import { toast, ToastContainer } from "react-toastify";
 import { ProductoProps } from "./ProductoInterface";
 import "./ProductoTarjeta.css";
 
-function ProductoTarjeta(
-  { id, nombre, descripcion, precio, imagen }: ProductoProps,
-  setCarrito: Dispatch<SetStateAction<number>>,
-  carrito: number
-) {
+interface ProductoTarjetaProps {
+  id: number;
+  nombre: string;
+  descripcion: string;
+  precio: number;
+  imagen: string;
+  setCarrito: Dispatch<SetStateAction<number>>;
+  carrito: number;
+}
+
+function ProductoTarjeta({
+  id,
+  nombre,
+  descripcion,
+  precio,
+  imagen,
+  setCarrito,
+  carrito,
+}: ProductoTarjetaProps) {
   let dimension = 300;
   const [loading, setLoading] = useState(true);
 
@@ -28,6 +42,11 @@ function ProductoTarjeta(
     //   setLoading(false);
     // };
   }, []);
+
+  const anadirCarrito = () => {
+    setCarrito((prev) => prev + 1);
+    console.log(carrito);
+  };
 
   return (
     <div className="product" id={"" + id}>
@@ -51,7 +70,8 @@ function ProductoTarjeta(
                   autoClose: 400,
                   hideProgressBar: true,
                 });
-                setCarrito(carrito + 1);
+                anadirCarrito();
+                // console.log("hola");
               }}
               redirectText="Comprar"
               subtitle={"Precio: $" + precio}
