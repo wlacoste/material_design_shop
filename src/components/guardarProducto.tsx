@@ -20,7 +20,7 @@ async function guardarProducto(
     })
     .then(function (response: any) {
       console.log(response);
-      setToggle()
+      setToggle((prevState) => !prevState)
     })
     .catch(function (error: any) {
       console.log(error);

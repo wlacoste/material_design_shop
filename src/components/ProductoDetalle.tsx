@@ -49,6 +49,7 @@ function ProductoDetalle(
               <p>{producto.descripcion}</p>
             </div>
             <div
+            className="ImagenURLdiv"
               style={{
                 width: "30%",
                 paddingLeft: "10px",
@@ -56,7 +57,7 @@ function ProductoDetalle(
               }}
             >
               <h3>Imagen</h3>
-              <a  href={url}>{producto.imagen}</a>
+              <a id="imagenURL" style={{overflow:"scroll", height:"150px"}}href={url}>{producto.imagen}</a>
             </div>
             <div style={{ paddingLeft: "10px" }}>
               <h3>Precio</h3>

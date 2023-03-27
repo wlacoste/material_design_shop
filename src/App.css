@@ -79,3 +79,20 @@
   transform: scale(1.1);
   transition-duration: 150ms;
 }
+
+#imagenURL{
+  max-width: 200px;
+
+}
+
+.ImagenURLdiv {
+  max-width: 30%;
+}
+
+.ImagenURLdiv a {
+  word-break: break-all;
+}
+#ImagenURL{
+  word-break: break-all;
+
+}
