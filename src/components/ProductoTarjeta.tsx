@@ -24,6 +24,9 @@ function ProductoTarjeta(
     setTimeout(() => {
       setLoading(false);
     }, 2000);
+    // return () => {
+    //   setLoading(false);
+    // };
   }, []);
 
   return (

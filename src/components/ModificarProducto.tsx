@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import { ProductoProps } from "./ProductoInterface";
 import { Button } from "@architecture-it/stylesystem";
 import { TextField } from "@mui/material";
+import { isImgUrl } from "../helper/isImgUrl";
 
 interface ModificarProductoProps {
   onSubmit: (
@@ -48,8 +49,14 @@ const ModificarProducto: React.FC<ModificarProductoProps> = ({
 
   const handleSubmit = async (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
-    dismiss();
-    onSubmit(id, nombre, descripcion, precio, imagen, setToggle);
+    let isImagen = await isImgUrl(imagen);
+    if (isImagen) {
+      console.log("es imagen");
+      onSubmit(id, nombre, descripcion, precio, imagen, setToggle);
+      dismiss();
+    } else {
+      console.log("no es imagen");
+    }
   };
 
   return (
