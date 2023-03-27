@@ -49,14 +49,16 @@ const ModificarProducto: React.FC<ModificarProductoProps> = ({
 
   const handleSubmit = async (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
-    let isImagen = await isImgUrl(imagen);
-    if (isImagen) {
-      console.log("es imagen");
-      onSubmit(id, nombre, descripcion, precio, imagen, setToggle);
-      dismiss();
-    } else {
-      console.log("no es imagen");
-    }
+    // let isImagen = await isImgUrl(imagen);
+    onSubmit(id, nombre, descripcion, precio, imagen, setToggle);
+
+    // if (isImagen) {
+    //   console.log("es imagen");
+    //   onSubmit(id, nombre, descripcion, precio, imagen, setToggle);
+       dismiss();
+    // } else {
+    //   console.log("no es imagen");
+    // }
   };
 
   return (

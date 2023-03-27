@@ -2,28 +2,28 @@
   "productos": [
     {
       "nombre": "Zapatos",
-      "descripcion": "1. f. Esp. Calzado hecho generalmente con piel o lona y suela de goma. Sirve para caminar,nadar y otras actividades.",
+      "descripcion": "1. f. Esp. Calzado hecho generalmente con piel o lona y suela de goma. Sirve para caminar,nadar y otras actividades. Muy bueno para los pies",
       "precio": 4554,
       "imagen": "https://http2.mlstatic.com/D_NQ_NP_889262-MLA41489039320_042020-O.jpg",
       "id": 2
     },
     {
       "nombre": "Bolsos",
-      "descripcion": "Para cosas maravillorarPara cosas maravillorarPara cosas maravillorarPara cosas maravillorar",
+      "descripcion": "bolsa de grandes dimensiones usada como maleta (similar a lo que en España, bolsa de viaje). Para llevar muchas cosas, parecido a una cartera grande.",
       "precio": 564,
       "imagen": "https://cartersarg.vtexassets.com/arquivos/ids/234929-800-auto?v=637969479178200000&width=800&height=auto&aspect=true",
       "id": 3
     },
     {
       "nombre": "Zorro blanco",
-      "descripcion": "Muy inteligente. Le gusta dormir mucho. Cazar y comer mucho",
+      "descripcion": "Muy inteligente. Le gusta dormir mucho. Cazar y comer mucho. La mayoría de los zorros viven entre 5 a 7 años en libertad, aunque pueden llegar a alcanzar los 12 ",
       "precio": 888,
       "imagen": "https://randomfox.ca/images/15.jpg",
       "id": 4
     },
     {
       "nombre": "Auriculares",
-      "descripcion": "para variados usos",
+      "descripcion": "En la calle, en el colectivo o en la oficina, tené siempre a mano tus auriculares. Vas a poder disfrutar de la música que más te gusta",
       "precio": 788,
       "imagen": "https://d3ugyf2ht6aenh.cloudfront.net/stores/001/344/643/products/78dc2786-d2f4-4778-a40f-4835f6e32a65-17cd32b8c61694924b16505521247760-640-0.jpeg",
       "id": 5
