@@ -10,8 +10,9 @@ interface ListaTarjetasProps {
 }
 
 function ListaProductos({ productos, setToggle }: ListaTarjetasProps) {
-  const tarjetas = productos.map((producto) =>
-    ProductoDetalle(producto, setToggle)
+  const tarjetas = productos.map((producto, index) =>
+    // ProductoDetalle(producto, setToggle)
+    <ProductoDetalle key={index} producto={producto} setToggle={setToggle}/>
   );
 
   return (

@@ -12,12 +12,17 @@ import EliminarProducto from "./EliminarProducto";
 import ModificarProducto from "./ModificarProducto";
 import { ProductoProps } from "./ProductoInterface";
 
-function ProductoDetalle(
+interface ProductoDetalleProps{
   producto: ProductoProps,
   setToggle: React.Dispatch<React.SetStateAction<boolean>>
+}
+
+function ProductoDetalle(
+  {producto, setToggle}: ProductoDetalleProps
 ) {
   const [isOpen, { toggle }] = useToggle(false);
   const [isOpenEliminar, setEliminar] = useState(false);
+  const url = producto.imagen.replace("https:",'');
 
   const togleEliminar = () => {
     setEliminar(!isOpenEliminar);
@@ -39,19 +44,19 @@ function ProductoDetalle(
               <h3>Nombre</h3>
               <h4>{producto.nombre}</h4>
             </div>
-            <div style={{ width: "55%", paddingRight: "10px" }}>
+            <div style={{ width: "40%", paddingRight: "10px" }}>
               <h3>Descripcion</h3>
               <p>{producto.descripcion}</p>
             </div>
             <div
               style={{
-                width: "15%",
+                width: "30%",
                 paddingLeft: "10px",
                 paddingRight: "10px",
               }}
             >
               <h3>Imagen</h3>
-              <a href="{producto.imagen}">{producto.imagen}</a>
+              <a  href={url}>{producto.imagen}</a>
             </div>
             <div style={{ paddingLeft: "10px" }}>
               <h3>Precio</h3>

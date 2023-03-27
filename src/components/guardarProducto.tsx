@@ -20,6 +20,7 @@ async function guardarProducto(
     })
     .then(function (response: any) {
       console.log(response);
+      setToggle()
     })
     .catch(function (error: any) {
       console.log(error);

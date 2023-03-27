@@ -1,8 +1,8 @@
 {
   "productos": [
     {
-      "nombre": "Fraomasas",
-      "descripcion": "1. f. Esp. Calzado hecho generalmente con piel o lona y suela de goma, que se ata",
+      "nombre": "Cafes",
+      "descripcion": "1. f. Esp. Calzado hecho generalmente con piel o lona y suela de goma, que se at",
       "precio": 4554,
       "imagen": "https://randomfox.ca/images/27.jpg",
       "id": 2
@@ -15,8 +15,8 @@
       "id": 3
     },
     {
-      "nombre": "Cholass",
-      "descripcion": "hola",
+      "nombre": "Zorro blanco",
+      "descripcion": "Muy inteligente. Le gusta dormir mucho. Cazar y comer mucho",
       "precio": 888,
       "imagen": "https://randomfox.ca/images/15.jpg",
       "id": 4
@@ -34,6 +34,34 @@
       "precio": 5455,
       "imagen": "https://randomfox.ca/images/112.jpg",
       "id": 6
+    },
+    {
+      "nombre": "Cafe",
+      "descripcion": "lalals,da",
+      "precio": 4546,
+      "imagen": "https://randomfox.ca/images/27.jpg",
+      "id": 7
+    },
+    {
+      "nombre": "Cossa",
+      "descripcion": "apsldasd",
+      "precio": 456,
+      "imagen": "https://randomfox.ca/images/27.jpg",
+      "id": 8
+    },
+    {
+      "nombre": "hola",
+      "descripcion": "ajdoiasdpsad",
+      "precio": 456,
+      "imagen": "https://i.imgur.com/gxSxi5a.png",
+      "id": 9
+    },
+    {
+      "nombre": "intento de arregl",
+      "descripcion": "slapdlapsda",
+      "precio": 789,
+      "imagen": "https://i.imgur.com/gxSxi5a.png",
+      "id": 10
     }
   ]
 }
