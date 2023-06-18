@@ -22,7 +22,7 @@ function ProductoDetalle(
 ) {
   const [isOpen, { toggle }] = useToggle(false);
   const [isOpenEliminar, setEliminar] = useState(false);
-  const url = producto.imagen.replace("https:",'');
+  const url = producto.image.replace("https:",'');
 
   const togleEliminar = () => {
     setEliminar(!isOpenEliminar);
@@ -42,11 +42,11 @@ function ProductoDetalle(
             </div>
             <div style={{ width: "20%" }}>
               <h3>Nombre</h3>
-              <h4>{producto.nombre}</h4>
+              <h4>{producto.title}</h4>
             </div>
             <div style={{ width: "40%", paddingRight: "10px" }}>
               <h3>Descripcion</h3>
-              <p>{producto.descripcion}</p>
+              <p>{producto.description}</p>
             </div>
             <div
             className="ImagenURLdiv"
@@ -57,11 +57,11 @@ function ProductoDetalle(
               }}
             >
               <h3>Imagen</h3>
-              <a id="imagenURL" style={{overflow:"scroll", height:"150px"}}href={url}>{producto.imagen}</a>
+              <a id="imagenURL" style={{overflow:"scroll", height:"150px"}}href={url}>{producto.image}</a>
             </div>
             <div style={{ paddingLeft: "10px" }}>
               <h3>Precio</h3>
-              <h4>{producto.precio}</h4>
+              <h4>{producto.price}</h4>
             </div>
           </div>
           <div

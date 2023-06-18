@@ -15,10 +15,10 @@ function ListaTarjetas({ productos, setCarrito, carrito }: ListaTarjetasProps) {
     <ProductoTarjeta
       key={index}
       id={producto.id}
-      nombre={producto.nombre}
-      descripcion={producto.descripcion}
-      precio={producto.precio}
-      imagen={producto.imagen}
+      nombre={producto.title}
+      descripcion={producto.description}
+      precio={producto.price}
+      imagen={producto.image}
       setCarrito={setCarrito}
       carrito={carrito}
     />

@@ -6,13 +6,37 @@
 
 .tarjeta img {
   width: 200px;
+
 }
 
 .product {
+  display: inline-block;
+
   margin: 10px;
   width: 300px;
-  height: 600px;
+  text-overflow: ellipsis; 
+  white-space: nowrap;
+  overflow: hidden; 
+  
 }
+
+
+
+
+
+
+.product:hover {
+  margin: 10px;
+  width: 300px;
+  max-height: 500px;
+  transition: max-height 1000ms linear;
+  text-overflow: initial; 
+  white-space: initial;
+  overflow: initial; 
+  z-index: 1000;
+}
+
+
 
 .productoItem {
   margin-left: 20px;

@@ -56,6 +56,7 @@ function ProductoTarjeta({
         ) : (
           <>
             <DescriptionCard
+            // className="descriptionCard"
               description={descripcion}
               imageProps={{
                 alt: nombre,

@@ -3,7 +3,9 @@ import { ProductoProps } from "../components/ProductoInterface";
 
 async function GetProductos() {
   const response = await axios.get("http://localhost:3000/productos");
-  return response.data as ProductoProps[];
+  const res = await axios.get("https://fakestoreapi.com/products");
+
+  return res.data as ProductoProps[];
 }
 
 export default GetProductos;
