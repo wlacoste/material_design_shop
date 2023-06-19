@@ -47,6 +47,7 @@ function ProductoTarjeta({
     setCarrito((prev) => prev + 1);
     console.log(carrito);
   };
+  const length = nombre.length + 20 + "rem"
 
   return (
     <div className="product" id={"" + id}>
@@ -54,9 +55,8 @@ function ProductoTarjeta({
         {loading ? (
           <Skeleton variant="rounded" height={531} animation="wave" />
         ) : (
-          <>
+          <div className="product-content">
             <DescriptionCard
-            // className="descriptionCard"
               description={descripcion}
               imageProps={{
                 alt: nombre,
@@ -70,6 +70,7 @@ function ProductoTarjeta({
                   position: toast.POSITION.TOP_CENTER,
                   autoClose: 400,
                   hideProgressBar: true,
+                  
                 });
                 anadirCarrito();
                 // console.log("hola");
@@ -81,8 +82,8 @@ function ProductoTarjeta({
               raised={true}
               variant="outlined"
             />
-            <ToastContainer />
-          </>
+            <ToastContainer style={{width:"40%", textOverflow: "ellipsis"}}/>
+          </div>
         )}
       </StyleSystemProvider>
     </div>

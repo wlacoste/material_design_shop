@@ -1,8 +1,9 @@
-import React, { useState } from "react";
+import React, { useContext, useState } from "react";
 import { ProductoProps } from "./ProductoInterface";
 import { Button } from "@architecture-it/stylesystem";
 import { TextField } from "@mui/material";
 import { isImgUrl } from "../helper/isImgUrl";
+import { ProductContext } from "../App";
 
 interface ModificarProductoProps {
   onSubmit: (
@@ -13,6 +14,7 @@ interface ModificarProductoProps {
     imagen: string,
     setToggle: React.Dispatch<React.SetStateAction<boolean>>
   ) => void;
+  isUpdate: boolean;
   producto: ProductoProps;
   dismiss: () => void;
   setToggle: React.Dispatch<React.SetStateAction<boolean>>;
@@ -23,12 +25,16 @@ const ModificarProducto: React.FC<ModificarProductoProps> = ({
   producto,
   dismiss,
   setToggle,
+  isUpdate,
 }) => {
   const [id, setId] = useState(producto.id);
-  const [nombre, setNombre] = useState(producto.nombre);
-  const [descripcion, setDescripcion] = useState(producto.descripcion);
-  const [precio, setPrecio] = useState(producto.precio);
-  const [imagen, setImagen] = useState(producto.imagen);
+  const [nombre, setNombre] = useState(producto.title);
+  const [descripcion, setDescripcion] = useState(producto.description);
+  const [precio, setPrecio] = useState(producto.price);
+  const [imagen, setImagen] = useState(producto.image);
+  const [prodContext, setProdContext] = useContext(ProductContext);
+  
+
 
   const handleNombreChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     setNombre(event.target.value);
@@ -50,15 +56,45 @@ const ModificarProducto: React.FC<ModificarProductoProps> = ({
   const handleSubmit = async (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
     // let isImagen = await isImgUrl(imagen);
-    onSubmit(id, nombre, descripcion, precio, imagen, setToggle);
+    // onSubmit(id, nombre, descripcion, precio, imagen, setToggle);
+    if(isUpdate){
 
-    // if (isImagen) {
-    //   console.log("es imagen");
-    //   onSubmit(id, nombre, descripcion, precio, imagen, setToggle);
+      const indexToUpdate = prodContext.findIndex(obj => obj.id === id);
+      
+      if (indexToUpdate !== -1) {    
+        const updatedObject: ProductoProps = {
+          id: id,
+          title: nombre,
+          description: descripcion,
+        price: precio,
+        image: imagen,
+      }
+      const updatedArray = [
+        ...prodContext.slice(0, indexToUpdate),
+        updatedObject,
+        ...prodContext.slice(indexToUpdate + 1)
+      ];
+      setProdContext(updatedArray);
+    }
+  }
+  else{
+    let newId = 1
+    if (prodContext.length > 0) {
+      const lastObject = prodContext[prodContext.length - 1];
+      newId = lastObject.id + 1;
+    } 
+    const newObject: ProductoProps = {
+      id: newId,
+      title: nombre,
+      description: descripcion,
+      price: precio,
+      image: imagen,
+  }
+  setProdContext([...prodContext,newObject]);
+
+  }
+   
        dismiss();
-    // } else {
-    //   console.log("no es imagen");
-    // }
   };
 
   return (
@@ -100,7 +136,7 @@ const ModificarProducto: React.FC<ModificarProductoProps> = ({
               onChange={handlePrecioChange}
               variant="outlined"
               required
-              inputProps={{ inputMode: "numeric", pattern: "[0-9]*" }}
+              inputProps={{ inputMode: "decimal"}}
             />
             <TextField
               style={{ display: "block", margin: "10px 0px 10px 0px" }}

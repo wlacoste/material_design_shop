@@ -19,10 +19,10 @@ const NuevoProducto: React.FC<NuevoProductoProps> = ({ setToggle }) => {
   const [isOpen, { toggle }] = useToggle(false);
   let producto: ProductoProps = {
     id: 0,
-    nombre: "",
-    descripcion: "",
-    imagen: "",
-    precio: 0,
+    title: "",
+    description: "",
+    image: "",
+    price: 0,
   };
   return (
     <>
@@ -46,6 +46,7 @@ const NuevoProducto: React.FC<NuevoProductoProps> = ({ setToggle }) => {
               <ModificarProducto
                 onSubmit={guardarProducto}
                 producto={producto}
+                isUpdate={false}
                 dismiss={toggle}
                 setToggle={setToggle}
               />

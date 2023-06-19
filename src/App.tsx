@@ -18,12 +18,17 @@ import ListaProductos from "./components/administrarProductos";
 import { LinkToggleSidebar } from "./layout/LinkToggleSideBar";
 import { Box } from "@mui/material";
 import { FooterVentas } from "./layout/FooterVentas";
+import React from "react";
+import { ThemeContext } from "@emotion/react";
+
+export const ProductContext = React.createContext<[ProductoProps[],React.Dispatch<React.SetStateAction<ProductoProps[]>>]>([[],()=>{}]);
 
 function App() {
   const [productos, setProductos] = useState<ProductoProps[]>([]);
   const [isOpen, { toggle }] = useToggle(false);
 
   const [carrito, setCarrito] = useState(0);
+  const [firstLoad, setFirstLoad] = useState(true);
 
   const [changeToggle, setToggle] = useState(false);
 
@@ -57,8 +62,11 @@ function App() {
       const datos = await GetProductos();
       await setProductos(datos);
     };
-
-    fetchData().catch(console.error);
+    if(firstLoad){
+      fetchData().catch(console.error);
+      setFirstLoad(false);
+    }
+    
   }, [changeToggle]);
 
   useEffect(() => {
@@ -90,6 +98,7 @@ function App() {
   return (
     <>
       <StyleSystemProvider>
+
         <Sidebar
           onClose={toggle}
           onOpen={function noRefCheck() {}}
@@ -136,8 +145,9 @@ function App() {
           open={isOpen}
         />
       </StyleSystemProvider>
+      <ProductContext.Provider value={[productos,setProductos]}>
       <RouterProvider router={routers} />
-
+      </ProductContext.Provider>
       <StyleSystemProvider>
         <FooterVentas />
       </StyleSystemProvider>

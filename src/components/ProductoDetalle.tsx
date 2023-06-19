@@ -4,13 +4,14 @@ import {
   StyleSystemProvider,
   useToggle,
 } from "@architecture-it/stylesystem";
-import { useState } from "react";
+import { useContext, useState } from "react";
 import { toast } from "react-toastify";
 import deleteProducto from "../servicio/DeleteProducto";
 import putProducto from "../servicio/PutProducto";
 import EliminarProducto from "./EliminarProducto";
 import ModificarProducto from "./ModificarProducto";
 import { ProductoProps } from "./ProductoInterface";
+import { ProductContext } from "../App";
 
 interface ProductoDetalleProps{
   producto: ProductoProps,
@@ -23,6 +24,8 @@ function ProductoDetalle(
   const [isOpen, { toggle }] = useToggle(false);
   const [isOpenEliminar, setEliminar] = useState(false);
   const url = producto.image.replace("https:",'');
+  const [prodContext, setProdContext] = useContext(ProductContext);
+
 
   const togleEliminar = () => {
     setEliminar(!isOpenEliminar);
@@ -101,6 +104,7 @@ function ProductoDetalle(
               <ModificarProducto
                 producto={producto}
                 onSubmit={putProducto}
+                isUpdate={true}
                 dismiss={toggle}
                 setToggle={setToggle}
               />
@@ -115,7 +119,7 @@ function ProductoDetalle(
           content={
             <>
               <EliminarProducto
-                onSubmit={deleteProducto}
+                onSubmit={()=>{setProdContext(prodContext.filter(x => x.id != producto.id))}}
                 idProducto={producto.id}
                 dismiss={togleEliminar}
                 setToggle={setToggle}

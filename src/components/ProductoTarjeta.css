@@ -21,12 +21,8 @@
 }
 
 
-
-
-
-
 .product:hover {
-  margin: 10px;
+  /* margin: 10px; */
   width: 300px;
   max-height: 500px;
   transition: max-height 1000ms linear;
@@ -34,6 +30,7 @@
   white-space: initial;
   overflow: initial; 
   z-index: 1000;
+  margin: 0px, 0px, 0px, 10px;
 }
 
 

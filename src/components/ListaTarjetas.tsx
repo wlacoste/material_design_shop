@@ -1,7 +1,8 @@
-import { Dispatch, SetStateAction } from "react";
+import { Dispatch, SetStateAction, useContext } from "react";
 import { Carrito } from "./Carrito";
 import { ProductoProps } from "./ProductoInterface";
 import ProductoTarjeta from "./ProductoTarjeta";
+import { ProductContext } from "../App";
 
 interface ListaTarjetasProps {
   productos: ProductoProps[];
@@ -10,7 +11,9 @@ interface ListaTarjetasProps {
 }
 
 function ListaTarjetas({ productos, setCarrito, carrito }: ListaTarjetasProps) {
-  const tarjetas = productos.map((producto, index) => (
+  const [prodContext, setProdContext] = useContext(ProductContext);
+
+  const tarjetas = prodContext.map((producto, index) => (
     // ProductoTarjeta(producto, setCarrito, carrito)
     <ProductoTarjeta
       key={index}
