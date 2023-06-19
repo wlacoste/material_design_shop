@@ -3,6 +3,7 @@ import { Header } from "@architecture-it/stylesystem/Header";
 import { library } from "@fortawesome/fontawesome-svg-core";
 import { faHome, IconName } from "@fortawesome/pro-light-svg-icons";
 import { faCartShopping } from "@fortawesome/pro-regular-svg-icons";
+import x from "./../assets/ShopMeNow.svg";
 import {
   faB,
   faCheckSquare,
@@ -33,7 +34,11 @@ export default function RootLayout({ toggle }: RootLayoutProps) {
   return (
     <>
       <header>
-        <Header onClickButton={toggle}></Header>
+        <Header logo={{
+          alt: 'ShopMeNow',
+          src: x
+        }}
+      onClickButton={toggle}></Header>
       </header>
       <main className="main">
         <Outlet />

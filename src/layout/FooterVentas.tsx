@@ -1,4 +1,6 @@
 import { Footer } from "@architecture-it/stylesystem";
+import x from "./../assets/ShopMeNow.svg";
+
 
 export function FooterVentas() {
   return (
@@ -7,15 +9,15 @@ export function FooterVentas() {
         institutional
         links={[
           {
-            text: "info@norlog.com.ar",
+            text: "wlacoste@outlook.com",
           },
           {
-            text: "Av. Presidente Perón N°4749, Benavídez, Bs As.",
+            text: "walterlacoste.dev",
           },
         ]}
         logoImgProps={{
           alt: "Norlog logo",
-          src: "https://img2.storyblok.com/200x0/filters:quality(20):format(webp)/f/63950/1365x469/bd003c53e1/logo.png",
+          src: x,
           width: "155px",
         }}
         name="Norlog"
