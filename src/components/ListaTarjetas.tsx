@@ -14,7 +14,6 @@ function ListaTarjetas({ productos, setCarrito, carrito }: ListaTarjetasProps) {
   const [prodContext, setProdContext] = useContext(ProductContext);
 
   const tarjetas = prodContext.map((producto, index) => (
-    // ProductoTarjeta(producto, setCarrito, carrito)
     <ProductoTarjeta
       key={index}
       id={producto.id}

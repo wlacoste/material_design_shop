@@ -4,7 +4,6 @@ import "react-toastify/dist/ReactToastify.css";
 import NuevoProducto from "./NuevoProducto";
 import React from "react";
 import ProductoDetalle from "./ProductoDetalle";
-import { width } from "@architecture-it/stylesystem/icons/faAngleRight";
 interface ListaTarjetasProps {
   productos: ProductoProps[];
   setToggle: React.Dispatch<React.SetStateAction<boolean>>;

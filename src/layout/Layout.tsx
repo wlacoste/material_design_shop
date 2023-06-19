@@ -34,11 +34,9 @@ export default function RootLayout({ toggle }: RootLayoutProps) {
   return (
     <>
       <header>
-        <Header logo={{
-          alt: 'ShopMeNow',
-          src: x
-        }}
-      onClickButton={toggle}></Header>
+        <Header logo={{ alt: 'ShopMeNow', src: x }} onClickButton={toggle}>
+        
+      </Header>
       </header>
       <main className="main">
         <Outlet />

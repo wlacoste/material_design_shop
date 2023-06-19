@@ -6,9 +6,8 @@
   "homepage": "https://wlacoste.github.io/material_design_shop",
   "scripts": {
     "dev": "vite",
-    "build": "tsc && vite build",
+    "build": "vite build --base=/material_design_shop/",
     "preview": "vite preview",
-    "predeploy": "npm run build",
     "deploy": "gh-pages -d dist"
   },
   "dependencies": {

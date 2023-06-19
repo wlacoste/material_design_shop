@@ -2,7 +2,6 @@ import React, { useContext, useState } from "react";
 import { ProductoProps } from "./ProductoInterface";
 import { Button } from "@architecture-it/stylesystem";
 import { TextField } from "@mui/material";
-import { isImgUrl } from "../helper/isImgUrl";
 import { ProductContext } from "../App";
 
 interface ModificarProductoProps {
@@ -21,10 +20,8 @@ interface ModificarProductoProps {
 }
 
 const ModificarProducto: React.FC<ModificarProductoProps> = ({
-  onSubmit,
   producto,
   dismiss,
-  setToggle,
   isUpdate,
 }) => {
   const [id, setId] = useState(producto.id);

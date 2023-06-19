@@ -1,6 +1,5 @@
 import { Button } from "@architecture-it/stylesystem";
-import React, { MouseEventHandler, useContext } from "react";
-import { ProductContext } from "../App";
+import React from "react";
 
 interface EliminarProductoProps {
   onSubmit: (
